@@ -1,0 +1,151 @@
+﻿@model KhumaloCraft_Part2.ViewModels.CartViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cart</title>
+    <style>
+        .button {
+            border: none;
+            color: white;
+            background-color: #F96D00;
+            padding: 8px 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .cart-container {
+            margin: 20px 0;
+        }
+
+        .cart-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #F96D00;
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #ddd;
+            padding: 20px 0;
+        }
+
+            .cart-item img {
+                max-width: 150px;
+                max-height: 150px;
+            }
+
+        .cart-summary {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+
+            .cart-summary h4 {
+                font-size: 1.25rem;
+                margin-bottom: 20px;
+            }
+
+            .cart-summary .btn {
+                background-color: #F96D00;
+                color: white;
+                border: none;
+            }
+
+        .processed-orders-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #F96D00;
+            margin-top: 20px;
+        }
+
+        .processed-orders-container {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="cart-header text-center">Shopping Cart</h1>
+        <div class="row">
+            <div class="col-md-8 cart-container">
+                @if (Model.CurrentCart.Products != null && Model.CurrentCart.Products.Any())
+                {
+                    foreach (var product in Model.CurrentCart.Products)
+                    {
+                        <div class="row cart-item">
+                            <div class="col-md-3">
+                                <img src="@product.ImageUrl" alt="@product.Name" class="img-fluid" />
+                            </div>
+                            <div class="col-md-9">
+                                <h5>@product.Name</h5>
+                                <p>Price: R @product.Price</p>
+                                <p>Category: @product.Category</p>
+                                <p>Quantity: 1</p>
+                                <form asp-action="RemoveCartItem" method="post">
+                                    <input type="hidden" name="productId" value="@product.ProductId" />
+                                    <button type="submit" class="button">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                     <p>No products currently in the cart.</p> 
+                }
+            </div>
+            <div class="col-md-4">
+                <div class="cart-summary">
+                    <h4>Cart Summary</h4>
+                    @if (Model.CurrentCart.IsCart)
+                    {
+                        <p><strong>Total Items:</strong> @Model.CurrentCart.Products?.Count()</p>
+                        <p><strong>Total Price:</strong> R @Model.CurrentCart.Products?.Sum(p => p.Price)</p>
+                        <button onclick="location.href='@Url.Action("Create", "Deliveries")'" class="btn btn-block">Proceed to Checkout</button>
+                    }
+                    else
+                    {
+                       <p>Cart is currently empty</p>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="processed-orders-header">Previous Orders</div>
+        @foreach (var delivery in Model.PreviousDeliveries)
+        {
+            <div class="processed-orders-container">
+                <h2>Delivery Details</h2>
+                <p><strong>Full Name:</strong> @delivery.FullName</p>
+                <p><strong>Address:</strong> @delivery.Address, @delivery.City, @delivery.Country, @delivery.PostalCode</p>
+                @foreach (var orderHistory in delivery.OrderHistories)
+                {
+                    foreach (var product in orderHistory.Products)
+                    {
+                        <div class="row cart-item">
+                            <div class="col-md-3">
+                                <img src="@product.ImageUrl" alt="@product.Name" class="img-fluid" />
+                            </div>
+                            <div class="col-md-9">
+                                <h5>@product.Name</h5>
+                                <p>Price: R @product.Price</p>
+                                <p>Category: @product.Category</p>
+                                <p>Quantity: 1</p>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+    </div>
+</body>
+</html>

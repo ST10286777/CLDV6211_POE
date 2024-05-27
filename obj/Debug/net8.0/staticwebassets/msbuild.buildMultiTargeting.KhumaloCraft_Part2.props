@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\KhumaloCraft_Part2.props" />
+</Project>

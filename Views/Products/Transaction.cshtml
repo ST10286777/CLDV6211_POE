@@ -1,0 +1,119 @@
+﻿@model KhumaloCraft_Part2.ViewModels.TransactionViewModel
+
+@{
+    ViewData["Title"] = "Transaction";
+}
+<style>
+    .button {
+        border-color: darkorange;
+        color: #F96D00;
+        background-color: white;
+        padding: 8px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .formcard {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 8px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 800px;
+        background-color: #F9B47A;
+    }
+
+    .contact-form {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        color: white;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+        width: 100%;
+    }
+
+        .form-group label,
+        .form-group input[type="text"],
+        .form-group span {
+            width: 100%;
+            display: block;
+        }
+
+        .form-group input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            width: 660px;
+        }
+
+    hr {
+        border: none;
+        height: 4px;
+        width: 100%;
+        color: white;
+    }
+
+    .form-group button[type="submit"] {
+        width: auto;
+        padding: 10px 20px;
+        background-color: #F96D00;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+    }
+</style>
+
+<div class="contact-form">
+    <div class="formcard">
+        <h2>Transaction</h2>
+        <hr />
+        <form asp-action="Transaction" method="post">
+            <div class="form-group">
+                <label asp-for="NameonCard" class="control-label"></label>
+                <input asp-for="NameonCard" class="form-control" />
+                <span asp-validation-for="NameonCard" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CardNumber" class="control-label"></label>
+                <input asp-for="CardNumber" class="form-control" />
+                <span asp-validation-for="CardNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpiryDate" class="control-label"></label>
+                <input asp-for="ExpiryDate" class="form-control datepicker" data-date-format="yyyy-mm-dd" />
+                <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecurityCode" class="control-label"></label>
+                <input asp-for="SecurityCode" class="form-control" />
+                <span asp-validation-for="SecurityCode" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="OrderHistoryId" />
+            <button type="submit" class="button">Submit</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

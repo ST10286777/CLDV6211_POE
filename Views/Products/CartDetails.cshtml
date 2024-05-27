@@ -1,0 +1,133 @@
+﻿
+@model KhumaloCraft_Part2.ViewModels.OrderHistoryView
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+    <style >
+    .button {
+        border: none;
+        color: white;
+        background-color: #F96D00;
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .form-group input[type="text"] {
+        max-width: 300px;
+        margin-right: 10px;
+        display: inline-block;
+    }
+
+    input[type="checkbox"] {
+        accent-color: #EC8829;
+    }
+
+    .order-details {
+        margin-top: 20px;
+    }
+
+        .order-details th, .order-details td {
+            vertical-align: middle;
+        }
+
+    .product-img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+</style>
+
+<h1 style="color: #F96D00;">Order Details</h1>
+
+<form asp-action="CartDetails" method="get" class="mb-4">
+    <div class="form-group">
+        <label for="FilterUserEmail">User Email:</label>
+        <input type="text" asp-for="FilterUserEmail" class="form-control" />
+        <button type="submit" class="button">Search</button>
+    </div>
+</form>
+
+<table class="table table-bordered order-details">
+    <thead class="thead-dark">
+        <tr>
+            <th>User Email</th>
+            <th>Product Image</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Order Date</th>
+            <th>Order Processed</th>
+            <th>Delivery Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var orderHistory in Model.OrderHistories)
+        {
+            var user = await UserManager.FindByIdAsync(orderHistory.UserId);
+            var userEmail = user != null ? user.Email : "Unknown";
+            var orderDate = orderHistory.OrderDate;
+            var delivery = Model.Deliveries?.FirstOrDefault(d => d.OrderHistories.Any(o => o.OrderHistoryId == orderHistory.OrderHistoryId));
+            var transaction = Model.Transactions?.FirstOrDefault(t => t.OrderHistoryId == orderHistory.OrderHistoryId);
+
+            foreach (var product in orderHistory.Products)
+            {
+                <tr>
+                    <td>@userEmail</td>
+                    <td><img src="@product.ImageUrl" class="product-img" /></td>
+                    <td>@product.Name</td>
+                    <td>R @product.Price</td>
+                    <td>@product.Category</td>
+                    <td>Quantity ordered: 1<br/> Quantity left: @product.Quantity</td>
+                    <td>@orderDate</td>
+                    <td>
+                        <form action="/submit" method="post">
+                            <input type="checkbox" id="styledCheckbox" name="styledCheckbox" value="styled">
+                        </form>
+                    </td>
+                    <td>
+                        @if (delivery != null)
+                        {
+                            <p><strong>Full Name:</strong> @delivery.FullName</p>
+                            <p><strong>Country:</strong> @delivery.Country</p>
+                            <p><strong>Address:</strong> @delivery.Address</p>
+                            <p><strong>City:</strong> @delivery.City</p>
+                            <p><strong>Postal Code:</strong> @delivery.PostalCode</p>
+                        }
+                        else
+                        {
+                            <p>No delivery information available.</p>
+                        }
+                        <form asp-action="RemoveOrderDetails" method="post" class="mt-2">
+                            <input type="hidden" name="orderHistoryId" value="@orderHistory.OrderHistoryId" />
+                            <button type="submit" class="button">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<div class="mt-3">
+    <a asp-action="MyWork" class="button">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

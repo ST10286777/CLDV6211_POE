@@ -1,0 +1,144 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+
+    .main {
+        background-color: rgba(0,0,0,.5);
+        color: #fff;
+        margin: 10px;
+        padding: 20px 20px;
+        align-content: center;
+        border-radius: 25px;
+        width: 230px;
+        height: 300px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .column {
+        float: left;
+        width: 29.3%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 8px;
+        background-color: dimgrey
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+        .container::after, .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+    .title {
+        color: darkorange;
+    }
+
+</style>
+
+<div class="text-center">
+    <font size="5" color="#F96D00">
+    <h1> Welcome to KhumaloCraft Emporium</h1>
+    <p>
+        View and purchase handcrafted products</font>
+    </p>
+    <p>
+        <img src="ImageFolder\Mandala.png" width="170" height="170"><img src="ImageFolder\Logo.png" width="290" height="270"><img src="ImageFolder\Mandala.png" width="170" height="170"><br /><br /><br /><br /><br /><br />
+    </p>
+    <P align="center">
+        <font size="2" face="Georgia" color=#F96D00">
+            <b>Access and purchase homemade craftwork</b>
+        </font>
+    </P>
+</div>
+
+<div style="background-color: grey ">
+    <font color="white">
+        <h2 style="text-align:center">Our Team</h2>
+
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img src="https://media.istockphoto.com/id/627676934/photo/confidence-and-style.jpg?s=612x612&w=0&k=20&c=lMuaeMOM0Jw-vCLEMmE9aBoujnINNB5ajmUEXtq8XIw=" alt="James" style="width:100%">
+                    <div class="container">
+                        <h2>James Khumalo</h2>
+                        <p class="title">CEO & Founder</p>
+                        <p>A visionary entrepreneur that strives to connect artists to a global audience</p>
+                        <p>James.Khumalo@KhumaloCraft.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="ImageFolder\David Du Plessis.png" alt="David" style="width:100%" >
+                    <div class="container">
+                        <h2>David Du Plessis</h2>
+                        <p class="title">Product Manager</p>
+                        <p>David is an educated and exprienced manager that is passionate about KhumaloCraft.</p>
+                        <p>David@KhumaloCraft.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="https://media.istockphoto.com/id/478699346/photo/young-business-woman-in-modern-office.jpg?s=612x612&w=0&k=20&c=qDAFYd8R1l2yGCWlPiK39WobBYjqGyJlKBa42cwOJ7I=" alt="John" style="width:100%">
+                    <div class="container">
+                        <h2>Lindi Ndlovu</h2>
+                        <p class="title">Chief Marketing Officer</p>
+                        <p>Lindi promotes and expands KhumaloCrafts everyday.</p>
+                        <p>Lindi@KhumaloCraft.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </font>
+</div>
+
+<div style="background-color: peachpuff ">
+    <h2 align="center">Recently added Craftwork </h2>
+    <div>
+        <font size="4">
+            <div class="main">
+                <img src="https://i.etsystatic.com/28918040/r/il/b61745/3102725794/il_300x300.3102725794_cqk7.jpg" width="170" height="170"><br />
+                Handmade pottery mug<br />
+                Price: R150,00<br />
+            </div>
+            <div class="main">
+                <img src="https://i.etsystatic.com/49999549/r/il/9f0cd2/5845787395/il_300x300.5845787395_ivr4.jpg" width="170" height="170"><br />
+                Acrylic birds<br />
+                Price: R350,00<br />
+
+            </div>
+            <div class="main">
+                <img src="https://i.etsystatic.com/45693563/r/il/2002e6/5510430245/il_794xN.5510430245_ki60.jpg" width="170" height="170"><br />
+                Face art sculpure<br />
+                Price: R650,00<br />
+            </div>
+            <div class="main">
+                <img src="https://i.etsystatic.com/35455678/r/il/beb96e/4008522345/il_300x300.4008522345_d9f9.jpg" width="170" height="170"><br />
+                Coffee Table<br />
+                Price: R1500,00<br />
+
+            </div>
+            <div class="main">
+                <img src="ImageFolder\Perry crochet.jpg" width="170" height="170"><br />
+                Perry Crochet<br />
+                Price: R450,00<br />
+
+            </div>
+        </font>
+    </div>
+</div>
+

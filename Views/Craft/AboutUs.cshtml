@@ -1,0 +1,176 @@
+﻿@{
+    ViewData["Title"] = "About us";
+}
+<style>
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+
+    .main
+    {
+        background-color: rgba(0,0,0,.5);
+        color: #fff;
+        margin: 20px;
+        padding: 20px;
+        align-content: center;
+        border-radius: 5px;
+        
+    }
+
+    .description {
+        background-color: peachpuff;
+        margin: 10px;
+        padding: 20px 20px;
+        align-content: center;
+        width: 350px;
+        height: 450px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .testimony {
+        background-color: lightgray;
+        margin: 20px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .testimonial {
+        margin-bottom: 20px;
+    }
+
+        .testimonial h5 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .testimonial p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+
+    .column {
+        float: left;
+        width: 29.3%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+        
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 8px;
+        background-color: #F4C573
+    }
+   
+    .container {
+        padding: 0 16px;
+    }
+
+        .container::after, .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+    .title {
+        color: grey;
+    }
+
+
+img:hover{
+    transform:scale(1.25);
+}
+
+</style>
+<h1 align="center" style="color: #F96D00;">@ViewData["Title"]   <img src="~/ImageFolder/khumaloCraftLogo.png" width="80" height="80"></h1>
+<div class="main">
+    <p>KhumaloCraft specializes in supporting artists by providing a platform that will display and sell their artwork<br/>
+       Our goal is to provide artist the ability to connect with individuals all over the world.<br />
+       KhumaloCraft was founded by James Khamulo a visionary that strived to help african artist inspire indivuals all over the world.<br/>
+       All products presented are quality handcrafted by professional artists in South Africa<br />
+    </p>
+</div>
+
+<h2 style="text-align:center">Our Team</h2>
+
+<div class="row" >
+    <div class="column">
+        <div class="card">
+            <img src="https://media.istockphoto.com/id/627676934/photo/confidence-and-style.jpg?s=612x612&w=0&k=20&c=lMuaeMOM0Jw-vCLEMmE9aBoujnINNB5ajmUEXtq8XIw=" alt="James" style="width:100%">
+            <div class="container">
+                <h2>James Khumalo</h2>
+                <p class="title">CEO & Founder</p>
+                <p>A visionary entrepreneur that strives to connect artists to a global audience</p>
+                <p>James.Khumalo@KhumaloCraft.com</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="~/ImageFolder/David Du Plessis.png" alt="David" style="width:100%">
+            <div class="container">
+                <h2>David Du Plessis</h2>
+                <p class="title">Product Manager</p>
+                <p>David is an educated and exprienced manager <br />
+                    that is passionate about KhumaloCraft.</p>
+                <p>David@KhumaloCraft.com</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="https://media.istockphoto.com/id/478699346/photo/young-business-woman-in-modern-office.jpg?s=612x612&w=0&k=20&c=qDAFYd8R1l2yGCWlPiK39WobBYjqGyJlKBa42cwOJ7I=" alt="John" style="width:100%">
+            <div class="container">
+                <h2>Lindi Ndlovu</h2>
+                <p class="title">Chief Marketing Officer</p>
+                <p>Lindi promotes and expands KhumaloCrafts everyday.</p>
+                <p>Lindi@KhumaloCraft.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div align="center">
+    <div class="description">
+        <h3>Our Products</h3>
+        <img src="https://cdn.pixabay.com/photo/2016/01/13/22/48/pottery-1139047_1280.jpg" style="width:100%">
+        <p>Our products are handcrafted with passion and creativity by a wide range of African artist.<br />
+            All the products are shipped with care and consideration based on the fragility of the artwork.</p>
+    </div>
+    <div class="description">
+        <h3>Our Artist</h3>
+        <img src="https://artafricamagazine.org/wp-content/uploads/2023/12/StandardBank_SBYA_Group_Shot_0075-possible-Final-1.jpg" style="width:100%">
+        <p>
+            Our artists deeply value every purchase made through this platform as it not only demonstrates appreciation for their work but also provides crucial support,
+            enabling them to continue producing exceptional artwork that enriches lives and inspires creativity.
+        </p>
+    </div>
+</div>
+        
+<div class="testimony">
+    <h2>What Our Customers Have to Say!</h2>
+    <div class="testimonial">
+        <h5>John</h5>
+        <p>
+            "While searching for unique art pieces I found KhumaloCraft, and I'm so glad I did! The piece I purchased is visually stunning and looks perfect in my living room!"
+        </p>
+    </div>
+    <div class="testimonial">
+        <h5>Maya</h5>
+        <p>
+            "I'm amazed by the talent and creativity of this artist. The shipping was delivered promptly, and the artwork was securely packaged."
+        </p>
+    </div>
+    <div class="testimonial">
+        <h5>Joel</h5>
+        <p>
+            "I recently purchased a custom woodwork piece from this artist, and I am absolutely thrilled with the result. The attention to detail and level of craftsmanship displayed in the woodwork are truly exceptional."
+        </p>
+    </div>
+</div>
+
+

@@ -1,0 +1,77 @@
+﻿@model KhumaloCraft_Part2.Models.Contact
+
+@{
+    ViewData["Title"] = "Details";
+}
+<style>
+    .button {
+        border: none;
+        color: white;
+        background-color: #F96D00;
+        padding: 8px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 18px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .main {
+        background-color: peachpuff;
+        color: black;
+        margin: 10px;
+        padding: 20px 20px;
+        align-content: center;
+        border-radius: 25px;
+        width: 680px;
+        height: 400px;
+        display: inline-block;
+        vertical-align: central;
+        float: left;
+        margin-right: 20px;
+    }
+
+    .clear {
+        clear: both;
+    }
+</style>
+
+<h1 style="color: #F96D00">Details</h1>
+
+<div class="main">
+    <h4>Contact</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+    </dl>
+</div>
+<div>
+    <br/>
+    <a asp-action="Edit" asp-route-id="@Model?.ContactId" class="button">Edit</a> |
+    <a asp-action="Index" class="button">Back to List</a>
+</div>

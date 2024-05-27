@@ -1,0 +1,119 @@
+﻿@model IEnumerable<KhumaloCraft_Part2.Models.Product>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<style>
+    .main {
+        background-color: rgba(0,0,0,.5);
+        color: #fff;
+        margin: 10px;
+        padding: 20px;
+        align-content: center;
+        border-radius: 25px;
+        width: 280px;
+        height: 410px;
+        display: inline-block;
+        vertical-align: central;
+    }
+
+    .button {
+        border: none;
+        color: white;
+        background-color: #F96D00;
+        padding: 8px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .Blockedbutton {
+        border: none;
+        color: white;
+        background-color: darkgrey;
+        padding: 8px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        margin-top: 10px;
+    }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .grid-item {
+        width: 100%;
+    }
+</style>
+
+<h1 align="center" style="color: #F96D00;">Craftworks</h1>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create" class="button">Create New</a> <br />
+    </p>
+}
+
+<div class="grid-container">
+    @foreach (var item in Model)
+    {
+        <div class="grid-item">
+            <div class="main">
+                <div class="image-container">
+                    <img src="@item.ImageUrl" alt="@item.Name">
+                </div>
+                <br />
+                @Html.DisplayFor(modelItem => item.Name)<br />
+                Price: R @Html.DisplayFor(modelItem => item.Price),00<br />
+                Category: @Html.DisplayFor(modelItem => item.Category) <br />
+                <a asp-action="Details" asp-route-id="@item.ProductId" class="button">Details</a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="button">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="button">Delete</a>
+                }
+                @if (item.Quantity > 0)
+                {
+                    <form asp-controller="Products" asp-action="AddToCart" method="post">
+                        <input type="hidden" name="productId" value="@item.ProductId" />
+                        <button type="submit" class="button">Add to Cart</button>
+                    </form>
+                }
+                else
+                {
+                    <br />
+
+                    <button class="Blockedbutton">Not Available</button>
+                }
+            </div>
+        </div>
+    }
+</div>
+

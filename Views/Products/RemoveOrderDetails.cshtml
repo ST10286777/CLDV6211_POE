@@ -1,0 +1,47 @@
+﻿@model KhumaloCraft_Part2.Models.OrderHistory
+
+@{
+    ViewData["Title"] = "Remove Order details";
+}
+<style>
+    .button {
+        border: none;
+        color: white;
+        background-color: #F96D00;
+        padding: 8px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
+<h1 style="color: #F96D00;">Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+
+    @foreach (var product in Model.Products)
+    {
+        <img src="@product.ImageUrl" alt="@product.Name" class="img-fluid" />
+
+        <div>
+            <h5>@product.Name</h5>
+            <p>Price: R @product.Price</p>
+            <p>Category: @product.Category</p>
+            <p>Quantity: 1</p>
+            <button class="button">Remove</button>
+        </div>
+
+    }
+
+    <form asp-action="RemoveOrderDetails">
+        <input type="hidden" asp-for="OrderHistoryId" />
+        <input type="submit" value="Delete" class="button" /> |
+        <a asp-action="CartDetails" class="button">Back to Cart Details</a>
+    </form>
+</div>

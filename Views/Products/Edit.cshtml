@@ -1,0 +1,128 @@
+﻿@model KhumaloCraft_Part2.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    .button {
+        color: white;
+        background-color: #F96D00;
+        padding: 8px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        width: auto;
+        padding: 10px 20px;
+    }
+
+    .formcard {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 8px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 800px;
+        background-color: #F9B47A;
+    }
+
+    .contact-form {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        color: white;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+        width: 100%;
+    }
+
+        .form-group label,
+        .form-group input[type="text"],
+        .form-group span {
+            width: 100%;
+            display: block;
+        }
+
+        .form-group input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            width: 660px;
+        }
+
+    hr {
+        border: none;
+        height: 4px;
+        width: 100%;
+        color: white;
+    }
+</style>
+
+<h1 style="color: #F96D00;" align="center">Edit</h1>
+
+<div class="contact-form">
+    <div class="formcard">
+        <h4>Product</h4>
+        <hr />
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProductId" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="button" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="MyWork" class="button">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
