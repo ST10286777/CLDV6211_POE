@@ -244,7 +244,6 @@ C:\Users\keira\source\repos\KhumaloCraft_Part2\KhumaloCraft_Part2\obj\Debug\net8
 C:\Users\keira\source\repos\KhumaloCraft_Part2\KhumaloCraft_Part2\obj\Debug\net8.0\KhumaloCraft_Part2.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\keira\source\repos\KhumaloCraft_Part2\KhumaloCraft_Part2\obj\Debug\net8.0\KhumaloCraft_Part2.RazorAssemblyInfo.cache
 C:\Users\keira\source\repos\KhumaloCraft_Part2\KhumaloCraft_Part2\obj\Debug\net8.0\KhumaloCraft_Part2.RazorAssemblyInfo.cs
-C:\Users\keira\source\repos\KhumaloCraft_Part2\KhumaloCraft_Part2\obj\Debug\net8.0\KhumaloCraft_Part2.sourcelink.json
 C:\Users\keira\source\repos\KhumaloCraft_Part2\KhumaloCraft_Part2\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\keira\source\repos\KhumaloCraft_Part2\KhumaloCraft_Part2\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\keira\source\repos\KhumaloCraft_Part2\KhumaloCraft_Part2\obj\Debug\net8.0\staticwebassets\msbuild.KhumaloCraft_Part2.Microsoft.AspNetCore.StaticWebAssets.props
